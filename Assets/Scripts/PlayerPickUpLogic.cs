@@ -25,7 +25,7 @@ public class PlayerPickUpLogic : MonoBehaviour
     private Transform pickUpParent;
 
     [SerializeField]
-    private GameObject inHandItem;
+    public GameObject inHandItem;
 
     private RaycastHit hit;
 
@@ -49,6 +49,7 @@ public class PlayerPickUpLogic : MonoBehaviour
                     if (hit.collider != null)
                     {
                         inHandItem.GetComponent<Animator>().enabled = false;
+                        inHandItem.GetComponent<MeshCollider>().enabled = true;
                         inHandItem.transform.SetParent(null);
                         inHandItem = null;
                        
