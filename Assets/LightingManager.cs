@@ -11,10 +11,10 @@ public class LightingManager : MonoBehaviour
     //Variables
     [SerializeField, Range(0, 24)] private float TimeOfDay;
     [SerializeField] Material[] SkyBoxes;
-
+    private float timeSpeedFactor = 0.1f;
     private void Start()
     {
-        
+        TimeOfDay = 12.0f;
     }
     private void Update()
     {
@@ -24,8 +24,8 @@ public class LightingManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            TimeOfDay += Time.deltaTime;
-            TimeOfDay %= 24 / 10;
+            TimeOfDay += Time.deltaTime * timeSpeedFactor;
+            TimeOfDay %= 24;
             UpdateLighting(TimeOfDay / 24f);
         } else
         {
