@@ -16,7 +16,8 @@ public class TreeLogic : MonoBehaviour
     void Update()
     {
         if (hp <= 0) {
-            Destroy(gameObject);
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            Invoke("DestroyTree", 15.0f);
         }
     }
 
@@ -24,5 +25,10 @@ public class TreeLogic : MonoBehaviour
     {
         Debug.Log(hp);
         hp -= dmg;
+    }
+
+    void DestroyTree()
+    {
+        Destroy(gameObject);
     }
 }
