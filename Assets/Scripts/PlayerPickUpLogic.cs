@@ -40,7 +40,7 @@ public class PlayerPickUpLogic : MonoBehaviour
                 pickUpUI.SetActive(false);
             }
 
-
+                
             if (inHandItem != null)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
@@ -48,8 +48,11 @@ public class PlayerPickUpLogic : MonoBehaviour
 
                     if (hit.collider != null)
                     {
+                    if (inHandItem.GetComponent<Animator>() != null)
+                    {
                         inHandItem.GetComponent<Animator>().enabled = false;
-                        inHandItem.GetComponent<MeshCollider>().enabled = true;
+                    }
+                    inHandItem.GetComponent<MeshCollider>().enabled = true;
                         inHandItem.transform.SetParent(null);
                         inHandItem = null;
                        
@@ -76,7 +79,10 @@ public class PlayerPickUpLogic : MonoBehaviour
                 inHandItem.transform.position = Vector3.zero;
                 inHandItem.transform.rotation = Quaternion.identity;
                 inHandItem.transform.SetParent(pickUpParent.transform, false);
-                inHandItem.GetComponent<Animator>().enabled = true;
+                if (inHandItem.GetComponent<Animator>() != null)
+                {
+                    inHandItem.GetComponent<Animator>().enabled = true;
+                }
 
                 if (rb != null)
                 {
