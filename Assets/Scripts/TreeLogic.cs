@@ -29,7 +29,7 @@ public class TreeLogic : MonoBehaviour
     {
        if (!spawnedWood)
         {
-            int newWoodNum = Random.Range(1, 4);
+            int newWoodNum = Random.Range(3, 5);
             for (int i = 0; i < newWoodNum; i++)
             {
                 GameObject newWood = Instantiate(woodPrefab, transform.parent.position, transform.parent.rotation);
