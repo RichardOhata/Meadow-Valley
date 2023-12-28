@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  terrain: {fileID: 0}
+  axeCollider: {fileID: 1186486440067417735}
 --- !u!95 &1079911030143205573
 Animator:
   serializedVersion: 5

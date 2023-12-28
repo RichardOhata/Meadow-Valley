@@ -224,9 +224,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1949316030090489008}
   - component: {fileID: 9199653795655333063}
-  - component: {fileID: 3606093450748831307}
   - component: {fileID: 5637402706866301959}
-  m_Layer: 6
+  - component: {fileID: 7719018764379171882}
+  m_Layer: 8
   m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,24 +278,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &3606093450748831307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387150568531146117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 0.7735849, g: 0.010946936, b: 0.010946936, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!65 &5637402706866301959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -317,6 +299,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1300359, y: 1, z: 2.3034065}
   m_Center: {x: -0.56502074, y: 0.0000000039720223, z: -0.6517039}
+--- !u!114 &7719018764379171882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387150568531146117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.9811321, g: 0.0509078, b: 0.0509078, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &9073390998289647464
 GameObject:
   m_ObjectHideFlags: 0

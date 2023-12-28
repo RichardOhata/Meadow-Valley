@@ -7,11 +7,13 @@ public class AxeSwing : MonoBehaviour
 {
     private Animator animator;
     public GameObject player;
+    public MeshCollider axeCollider; 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
+        //Physics.IgnoreCollision(axeCollider, player.GetComponent<CapsuleCollider>());
     }
 
     // Update is called once per frame

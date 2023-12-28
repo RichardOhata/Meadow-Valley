@@ -29,68 +29,80 @@ public class PlayerPickUpLogic : MonoBehaviour
 
     private RaycastHit hit;
 
+    public int woodCount = 0;
+
+    public AudioSource woodPickUpSFX;
     private void Update()
     {
 
-            Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
-            if (hit.collider != null)
-            {
-                hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineHidden;
-                hit.collider.GetComponent<Outline>().OutlineWidth = 0;
-                pickUpUI.SetActive(false);
-            }
+        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
+        if (hit.collider != null)
+        {
+            hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineHidden;
+            hit.collider.GetComponent<Outline>().OutlineWidth = 0;
+            pickUpUI.SetActive(false);
+        }
 
-                
-            if (inHandItem != null)
+
+        if (inHandItem != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                if (Input.GetKeyDown(KeyCode.Q))
+
+                if (hit.collider != null)
                 {
-
-                    if (hit.collider != null)
-                    {
                     if (inHandItem.GetComponent<Animator>() != null)
                     {
                         inHandItem.GetComponent<Animator>().enabled = false;
                     }
                     inHandItem.GetComponent<MeshCollider>().enabled = true;
-                        inHandItem.transform.SetParent(null);
-                        inHandItem = null;
-                       
-                        Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-                        if (rb != null)
-                        {
-                            rb.isKinematic = false;
-                        }
+                    inHandItem.transform.SetParent(null);
+                    inHandItem = null;
+
+                    Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.isKinematic = false;
                     }
                 }
+            }
                 return;
-            }
+        }
 
-            if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, pickableLayerMask))
+        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, pickableLayerMask))
+        {
+            hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineAll;
+            hit.collider.GetComponent<Outline>().OutlineWidth = 3;
+            pickUpUI.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineAll;
-                hit.collider.GetComponent<Outline>().OutlineWidth = 3;
-                pickUpUI.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Pickup"))
                 {
-            
-                Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-                inHandItem = hit.collider.gameObject;
-                inHandItem.transform.position = Vector3.zero;
-                inHandItem.transform.rotation = Quaternion.identity;
-                inHandItem.transform.SetParent(pickUpParent.transform, false);
-                if (inHandItem.GetComponent<Animator>() != null)
-                {
-                    inHandItem.GetComponent<Animator>().enabled = true;
-                }
+                    Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+                    inHandItem = hit.collider.gameObject;
+                    inHandItem.transform.position = Vector3.zero;
+                    inHandItem.transform.rotation = Quaternion.identity;
+                    inHandItem.transform.SetParent(pickUpParent.transform, false);
+                    if (inHandItem.GetComponent<Animator>() != null)
+                    {
+                        inHandItem.GetComponent<Animator>().enabled = true;
+                    }
 
-                if (rb != null)
-                {
-                    rb.isKinematic = true;
-                    rb.constraints = RigidbodyConstraints.None;
+                    if (rb != null)
+                    {
+                        rb.isKinematic = true;
+                        rb.constraints = RigidbodyConstraints.None;
 
+                    }
                 }
+                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Resource"))
+                {
+                    woodCount += 1;
+                    woodPickUpSFX.Play();
+                    Destroy(hit.collider.gameObject);
+                    pickUpUI.SetActive(false);
                 }
             }
+        }
     }
 }
