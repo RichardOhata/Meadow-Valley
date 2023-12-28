@@ -33,6 +33,5 @@ public class AxeSwing : MonoBehaviour
         {
             collision.gameObject.GetComponent<TreeLogic>().DamageTree(20);
         }
-        Debug.Log(collision.gameObject.name);
     }
 }
