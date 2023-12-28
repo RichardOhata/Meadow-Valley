@@ -13,7 +13,7 @@ public class AxeSwing : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
-        //Physics.IgnoreCollision(axeCollider, player.GetComponent<CapsuleCollider>());
+        Physics.IgnoreCollision(axeCollider, player.GetComponent<CapsuleCollider>());
     }
 
     // Update is called once per frame

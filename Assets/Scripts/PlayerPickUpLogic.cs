@@ -43,31 +43,8 @@ public class PlayerPickUpLogic : MonoBehaviour
             pickUpUI.SetActive(false);
         }
 
+        DropInHandItem();
 
-        if (inHandItem != null)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-
-                if (hit.collider != null)
-                {
-                    if (inHandItem.GetComponent<Animator>() != null)
-                    {
-                        inHandItem.GetComponent<Animator>().enabled = false;
-                    }
-                    inHandItem.GetComponent<MeshCollider>().enabled = true;
-                    inHandItem.transform.SetParent(null);
-                    inHandItem = null;
-
-                    Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-                    if (rb != null)
-                    {
-                        rb.isKinematic = false;
-                    }
-                }
-            }
-                return;
-        }
 
         if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, pickableLayerMask))
         {
@@ -104,5 +81,28 @@ public class PlayerPickUpLogic : MonoBehaviour
                 }
             }
         }
+    }
+
+    void DropInHandItem()
+    {
+
+        if (inHandItem != null && Input.GetKeyDown(KeyCode.Q))
+        {
+            if (inHandItem.GetComponent<Animator>() != null)
+            {
+                inHandItem.GetComponent<Animator>().enabled = false;
+            }
+            inHandItem.GetComponent<MeshCollider>().enabled = true;
+            inHandItem.transform.SetParent(null);
+            Rigidbody rb = inHandItem.GetComponent<Rigidbody>();
+            inHandItem = null;
+
+
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+            }
+        }
+
     }
 }

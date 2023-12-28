@@ -15,7 +15,7 @@ public class TreeLogic : MonoBehaviour
         if (hp <= 0) {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             DropWood();
-            woodChopSFX.enabled = false;
+          
             Invoke("DestroyTree", 15.0f);
         }
     }
