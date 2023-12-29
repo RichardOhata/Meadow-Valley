@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ResourceTracker : MonoBehaviour
+public class ResourceTrackerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI woodCount;
     [SerializeField] GameObject player;
@@ -21,10 +21,7 @@ public class ResourceTracker : MonoBehaviour
 
     void UpdateWoodCount()
     {
-        if (playerPickUpLogic.woodCount != 0)
-        {
-            woodCount.gameObject.SetActive(true);
-        }
+        woodCount.gameObject.SetActive(playerPickUpLogic.woodCount != 0);
         woodCount.text = "Wood: " + playerPickUpLogic.woodCount;
     }
 }
