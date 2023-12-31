@@ -1390,9 +1390,10 @@ MonoBehaviour:
     m_Bits: 1024
   _defaultLayerInt: 8
   _rayOrigin: {fileID: 2447363787008804435}
-  _buildingMatPositive: {fileID: 0}
-  _buildingMatNegative: {fileID: 0}
-  _gameObjectToPosition: {fileID: 0}
+  _buildingMatPositive: {fileID: 2100000, guid: 9d6e6efdc4cffc2458893d98bd95b444, type: 2}
+  _buildingMatNegative: {fileID: 2100000, guid: d6aa5816516f5e24c95d5a4c2b209ee6, type: 2}
+  _deleteModeEnabled: 0
+  _spawnedBuilding: {fileID: 7211087538984470105, guid: 8f38f45243438454897141fc4a62f2ec, type: 3}
 --- !u!1 &8035453862932320440
 GameObject:
   m_ObjectHideFlags: 0

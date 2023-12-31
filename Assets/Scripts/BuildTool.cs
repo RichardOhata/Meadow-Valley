@@ -17,7 +17,8 @@ public class BuildTool : MonoBehaviour
 
     private Camera _camera;
 
-    public GameObject _gameObjectToPosition;
+    [SerializeField] private Building _spawnedBuilding;
+    private Building _targetBuilding;
 
     void Start()
     {
@@ -32,7 +33,8 @@ public class BuildTool : MonoBehaviour
         if (_deleteModeEnabled)
         {
             deleteBuildLogic();
-        } else
+        }
+        else
         {
             buildLogic();
         }
@@ -46,25 +48,67 @@ public class BuildTool : MonoBehaviour
 
     private void buildLogic()
     {
-        if (_gameObjectToPosition == null || !IsRayHittingSomething(_buildModeLayerMask, out RaycastHit hitInfo))
+        if (_targetBuilding != null && _targetBuilding.FlaggedForDelete)
+        {
+            _targetBuilding.RemoveDeleteFlag();
+            _targetBuilding = null;
+        }
+        if (_spawnedBuilding == null)
         {
             return;
         }
 
-        _gameObjectToPosition.transform.position = hitInfo.point;
+        if (!IsRayHittingSomething(_buildModeLayerMask, out RaycastHit hitInfo))
+        {
+            _spawnedBuilding.UpdateMaterial(_buildingMatNegative);
+        }
+        else
+        {
+            _spawnedBuilding.UpdateMaterial(_buildingMatPositive);
+            _spawnedBuilding.transform.position = hitInfo.point;
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Instantiate(_gameObjectToPosition, hitInfo.point, Quaternion.identity);
+            Building placedBuilding = Instantiate(_spawnedBuilding, hitInfo.point, Quaternion.identity);
+            placedBuilding.PlaceBuilding();
         }
     }
 
     private void deleteBuildLogic()
     {
-        if (!IsRayHittingSomething(_deleteModeLayerMask, out RaycastHit hitInfo)) return;
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (IsRayHittingSomething(_deleteModeLayerMask, out RaycastHit hitInfo))
         {
-            Destroy(hitInfo.collider.gameObject);
+            var detectedBuilding = hitInfo.collider.gameObject.GetComponentInParent<Building>();
+
+            if (detectedBuilding == null) return;
+
+            if (_targetBuilding == null) _targetBuilding = detectedBuilding;
+
+            if (detectedBuilding != _targetBuilding && _targetBuilding.FlaggedForDelete)
+            {
+                _targetBuilding.RemoveDeleteFlag();
+                _targetBuilding = detectedBuilding;
+            }
+
+            if (detectedBuilding == _targetBuilding && !_targetBuilding.FlaggedForDelete)
+            {
+                _targetBuilding.FlagForDelete(_buildingMatNegative);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Destroy(_targetBuilding.gameObject);
+                _targetBuilding = null;
+            }
+        }
+        else
+        {
+            if (_targetBuilding != null && _targetBuilding.FlaggedForDelete)
+            {
+                _targetBuilding.RemoveDeleteFlag();
+                _targetBuilding = null;
+            }
         }
     }
 
@@ -76,5 +120,5 @@ public class BuildTool : MonoBehaviour
         }
     }
 
-  
+
 }
