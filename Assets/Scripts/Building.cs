@@ -20,9 +20,6 @@ public class Building : MonoBehaviour
             _defaultMaterial = _renderer.material;
         }
     }
-    //private void Start()
-    //{
-    //}
 
     public void UpdateMaterial(Material newMaterial)
     {

@@ -19,7 +19,7 @@ public class BuildTool : MonoBehaviour
 
     [SerializeField] private Building _spawnedBuilding;
     private Building _targetBuilding;
-
+    private Quaternion _lastRotation;
     void Start()
     {
         _camera = Camera.main;
@@ -58,6 +58,12 @@ public class BuildTool : MonoBehaviour
             return;
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            _spawnedBuilding.transform.Rotate(0, 90, 0);
+            _lastRotation = _spawnedBuilding.transform.rotation;
+        }
+
         if (!IsRayHittingSomething(_buildModeLayerMask, out RaycastHit hitInfo))
         {
             _spawnedBuilding.UpdateMaterial(_buildingMatNegative);
@@ -70,7 +76,7 @@ public class BuildTool : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Building placedBuilding = Instantiate(_spawnedBuilding, hitInfo.point, Quaternion.identity);
+            Building placedBuilding = Instantiate(_spawnedBuilding, hitInfo.point, _lastRotation);
             placedBuilding.PlaceBuilding();
         }
     }
