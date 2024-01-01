@@ -29,6 +29,7 @@ public class PlayerPickUpLogic : MonoBehaviour
 
     private RaycastHit hit;
 
+    [SerializeField] ResourceTracker resourceTracker;
     public int woodCount = 0;
 
     public AudioSource woodPickUpSFX;
@@ -74,7 +75,7 @@ public class PlayerPickUpLogic : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Resource"))
                 {
-                    woodCount += 1;
+                    resourceTracker.incWood(1);
                     woodPickUpSFX.Play();
                     Destroy(hit.collider.gameObject);
                     pickUpUI.SetActive(false);

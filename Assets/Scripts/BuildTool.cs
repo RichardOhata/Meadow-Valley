@@ -12,16 +12,18 @@ public class BuildTool : MonoBehaviour
     [SerializeField] private Transform _rayOrigin;
     [SerializeField] private Material _buildingMatPositive;
     [SerializeField] private Material _buildingMatNegative;
-
+    [SerializeField] private GameObject player;
+    private ResourceTracker resourceTracker;
     public bool _deleteModeEnabled;
 
     private Camera _camera;
 
-    [SerializeField] private Building _spawnedBuilding;
-    private Building _targetBuilding;
+    [SerializeField] public Building _spawnedBuilding;
+    //private Building _targetBuilding;
     private Quaternion _lastRotation;
     void Start()
     {
+        resourceTracker = player.GetComponent<ResourceTracker>();
         _camera = Camera.main;
     }
 
@@ -32,7 +34,7 @@ public class BuildTool : MonoBehaviour
 
         if (_deleteModeEnabled)
         {
-            deleteBuildLogic();
+            //deleteBuildLogic();
         }
         else
         {
@@ -48,11 +50,11 @@ public class BuildTool : MonoBehaviour
 
     private void buildLogic()
     {
-        if (_targetBuilding != null && _targetBuilding.FlaggedForDelete)
-        {
-            _targetBuilding.RemoveDeleteFlag();
-            _targetBuilding = null;
-        }
+        //if (_targetBuilding != null && _targetBuilding.FlaggedForDelete)
+        //{
+        //    _targetBuilding.RemoveDeleteFlag();
+        //    _targetBuilding = null;
+        //}
         if (_spawnedBuilding == null)
         {
             return;
@@ -76,47 +78,52 @@ public class BuildTool : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Building placedBuilding = Instantiate(_spawnedBuilding, hitInfo.point, _lastRotation);
-            placedBuilding.PlaceBuilding();
+            if (resourceTracker.decWood(5))
+            {
+                _spawnedBuilding.RemoveDeleteFlag();
+                Building placedBuilding = Instantiate(_spawnedBuilding, hitInfo.point, _lastRotation);
+                placedBuilding.PlaceBuilding();
+            }
+        
         }
     }
 
-    private void deleteBuildLogic()
-    {
-        if (IsRayHittingSomething(_deleteModeLayerMask, out RaycastHit hitInfo))
-        {
-            var detectedBuilding = hitInfo.collider.gameObject.GetComponentInParent<Building>();
+    //private void deleteBuildLogic()
+    //{
+    //    if (IsRayHittingSomething(_deleteModeLayerMask, out RaycastHit hitInfo))
+    //    {
+    //        var detectedBuilding = hitInfo.collider.gameObject.GetComponentInParent<Building>();
 
-            if (detectedBuilding == null) return;
+    //        if (detectedBuilding == null) return;
 
-            if (_targetBuilding == null) _targetBuilding = detectedBuilding;
+    //        if (_targetBuilding == null) _targetBuilding = detectedBuilding;
 
-            if (detectedBuilding != _targetBuilding && _targetBuilding.FlaggedForDelete)
-            {
-                _targetBuilding.RemoveDeleteFlag();
-                _targetBuilding = detectedBuilding;
-            }
+    //        if (detectedBuilding != _targetBuilding && _targetBuilding.FlaggedForDelete)
+    //        {
+    //            _targetBuilding.RemoveDeleteFlag();
+    //            _targetBuilding = detectedBuilding;
+    //        }
 
-            if (detectedBuilding == _targetBuilding && !_targetBuilding.FlaggedForDelete)
-            {
-                _targetBuilding.FlagForDelete(_buildingMatNegative);
-            }
+    //        if (detectedBuilding == _targetBuilding && !_targetBuilding.FlaggedForDelete)
+    //        {
+    //            _targetBuilding.FlagForDelete(_buildingMatNegative);
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Destroy(_targetBuilding.gameObject);
-                _targetBuilding = null;
-            }
-        }
-        else
-        {
-            if (_targetBuilding != null && _targetBuilding.FlaggedForDelete)
-            {
-                _targetBuilding.RemoveDeleteFlag();
-                _targetBuilding = null;
-            }
-        }
-    }
+    //        if (Input.GetKeyDown(KeyCode.Mouse0))
+    //        {
+    //            Destroy(_targetBuilding.gameObject);
+    //            _targetBuilding = null;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (_targetBuilding != null && _targetBuilding.FlaggedForDelete)
+    //        {
+    //            _targetBuilding.RemoveDeleteFlag();
+    //            _targetBuilding = null;
+    //        }
+    //    }
+    //}
 
     private void toggleBuildMode()
     {

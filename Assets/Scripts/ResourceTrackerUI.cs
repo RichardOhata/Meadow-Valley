@@ -7,11 +7,11 @@ public class ResourceTrackerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI woodCount;
     [SerializeField] GameObject player;
-    PlayerPickUpLogic playerPickUpLogic;
+    ResourceTracker resourceTracker;
 
     private void Start()
     {
-        playerPickUpLogic = player.GetComponent<PlayerPickUpLogic>();
+       resourceTracker = player.GetComponent<ResourceTracker>();
     }
     // Update is called once per frame
     void Update()
@@ -21,7 +21,7 @@ public class ResourceTrackerUI : MonoBehaviour
 
     void UpdateWoodCount()
     {
-        woodCount.gameObject.SetActive(playerPickUpLogic.woodCount != 0);
-        woodCount.text = "Wood: " + playerPickUpLogic.woodCount;
+        woodCount.gameObject.SetActive(resourceTracker.woodCount != 0);
+        woodCount.text = "Wood: " + resourceTracker.woodCount;
     }
 }

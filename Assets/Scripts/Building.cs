@@ -9,29 +9,29 @@ public class Building : MonoBehaviour
 
     private bool _flaggedForDelete;
     public bool FlaggedForDelete => _flaggedForDelete;
-
     private void Awake()
     {
-        
+    
         _renderer = GetComponentInChildren<Renderer>();
         if (_renderer)
         {
-            Debug.Log(_renderer.material);
             _defaultMaterial = _renderer.material;
+            Debug.Log(_defaultMaterial);
         }
     }
 
     public void UpdateMaterial(Material newMaterial)
     {
-        if (_renderer.material != newMaterial)
-        {
-            _renderer.material = newMaterial;   
+            if (_renderer.material != newMaterial)
+            {
+                _renderer.material = newMaterial;
         }
+ 
     }
 
     public void PlaceBuilding()
     {
-        UpdateMaterial(_defaultMaterial);
+        UpdateMaterial(_defaultMaterial); 
     }
 
     public void FlagForDelete(Material deleteMat)
