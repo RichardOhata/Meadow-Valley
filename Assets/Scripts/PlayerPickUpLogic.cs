@@ -30,7 +30,6 @@ public class PlayerPickUpLogic : MonoBehaviour
     private RaycastHit hit;
 
     [SerializeField] ResourceTracker resourceTracker;
-    public int woodCount = 0;
 
     public AudioSource woodPickUpSFX;
     private void Update()
