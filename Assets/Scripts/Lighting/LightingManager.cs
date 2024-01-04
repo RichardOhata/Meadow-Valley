@@ -12,7 +12,7 @@ public class LightingManager : MonoBehaviour
     [SerializeField, Range(0, 24)] private float TimeOfDay;
     [SerializeField] Material[] SkyBoxes;
     [SerializeField] GameObject AmbientLight;
-    private float timeSpeedFactor = 0.1f;
+    private float timeSpeedFactor = 0.01f;
     private void Start()
     {
         TimeOfDay = 12.0f;
