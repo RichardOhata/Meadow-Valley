@@ -2737,7 +2737,7 @@ GameObject:
   - component: {fileID: 727785720}
   - component: {fileID: 727785724}
   - component: {fileID: 727785723}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BuildBridgeSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2862,10 +2862,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCameraTransform: {fileID: 1886575443}
-  hitRange: 10
+  hitRange: 5
   buildBridgeUI: {fileID: 298279794}
   bridge: {fileID: 1098138998}
   resourceTracker: {fileID: 478246960}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1001 &749881337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4004,7 +4007,7 @@ GameObject:
   - component: {fileID: 1051973754}
   - component: {fileID: 1051973753}
   - component: {fileID: 1051973752}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9047,26 +9050,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8605278212131092001, guid: 6661e5cac08d00245851c89174ad3a5a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605278212131092001, guid: 6661e5cac08d00245851c89174ad3a5a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605278212131092001, guid: 6661e5cac08d00245851c89174ad3a5a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605278212131092001, guid: 6661e5cac08d00245851c89174ad3a5a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605278212131092001, guid: 6661e5cac08d00245851c89174ad3a5a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8605278212239139037, guid: 6661e5cac08d00245851c89174ad3a5a, type: 3}
       propertyPath: m_Name
       value: PT_Fruit_Tree_01_green

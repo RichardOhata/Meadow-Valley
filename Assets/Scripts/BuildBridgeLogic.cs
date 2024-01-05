@@ -12,12 +12,12 @@ public class BuildBridgeLogic : MonoBehaviour
     [SerializeField] private GameObject buildBridgeUI;
     [SerializeField] private GameObject bridge;
     [SerializeField] private ResourceTracker resourceTracker;
+    [SerializeField] private LayerMask layerMask;
     private RaycastHit hit;
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.green);
         if (hit.collider != null && hit.collider.gameObject.name == "BuildBridgeSign")
         {
             hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineHidden;
@@ -25,7 +25,7 @@ public class BuildBridgeLogic : MonoBehaviour
             buildBridgeUI.SetActive(false);
         }
 
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange))
+        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, layerMask))
         {
             if (hit.collider != null && hit.collider.gameObject.name == "BuildBridgeSign")
             {
