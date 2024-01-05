@@ -14,8 +14,9 @@ public class TreeLogic : MonoBehaviour
     {
         if (hp <= 0) {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
             DropWood();
-          
+            
             Invoke("DestroyTree", 15.0f);
         }
     }
@@ -43,6 +44,4 @@ public class TreeLogic : MonoBehaviour
        
         Destroy(transform.parent.gameObject);
     }
-
-  
 }

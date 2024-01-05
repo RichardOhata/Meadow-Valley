@@ -28,11 +28,11 @@ public class AxeSwing : MonoBehaviour
         animator.SetTrigger("Base_Attack");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Tree")
+        if (other.gameObject.tag == "Tree")
         {
-            collision.gameObject.GetComponent<TreeLogic>().DamageTree(20);
+            other.gameObject.GetComponent<TreeLogic>().DamageTree(20);
         }
     }
 }

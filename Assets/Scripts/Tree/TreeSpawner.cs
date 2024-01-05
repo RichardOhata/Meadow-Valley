@@ -10,6 +10,7 @@ public class TreeSpawner : MonoBehaviour
     public int numberOfTrees = 10000; // Number of trees to be placed
     [SerializeField] private GameObject waterBorder;
     [SerializeField] private GameObject riverBorder;
+    [SerializeField] private GameObject riverBorder2;
     [SerializeField] private GameObject villageBorder;
     void Start()
     {
@@ -30,6 +31,7 @@ public class TreeSpawner : MonoBehaviour
         BoxCollider obstacleCollider = waterBorder.GetComponent<BoxCollider>();
         BoxCollider obstacleCollider2 = riverBorder.GetComponent<BoxCollider>();
         BoxCollider obstacleCollider3 = villageBorder.GetComponent<BoxCollider>();
+        BoxCollider obstacleCollider4 = riverBorder2.GetComponent<BoxCollider>();
         for (int i = 0; i < numberOfTrees; i++)
         {
             float randomX = Random.Range(0f, terrainSize.x);
@@ -40,7 +42,7 @@ public class TreeSpawner : MonoBehaviour
 
             // Adjust the height of trees slightly to avoid floating or sinking
             randomPosition.y += 0.1f;
-            if (!IsInsideObstacle(randomPosition, obstacleCollider) && !IsInsideObstacle(randomPosition, obstacleCollider2) && !IsInsideObstacle(randomPosition, obstacleCollider3))
+            if (!IsInsideObstacle(randomPosition, obstacleCollider) && !IsInsideObstacle(randomPosition, obstacleCollider2) && !IsInsideObstacle(randomPosition, obstacleCollider3) && !IsInsideObstacle(randomPosition, obstacleCollider4))
             {
                 GameObject newTree = Instantiate(treePrefab, randomPosition, Quaternion.identity);
                 newTree.transform.parent = gameObject.transform; // Optional: Organize trees under an empty game object

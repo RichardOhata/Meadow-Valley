@@ -7,7 +7,7 @@ public class BuildBridgeLogic : MonoBehaviour
 
     [SerializeField] private Transform playerCameraTransform;
 
-    [SerializeField, Min(1)] private float hitRange = 5;
+    [SerializeField, Min(1)] private float hitRange = 10;
 
     [SerializeField] private GameObject buildBridgeUI;
     [SerializeField] private GameObject bridge;
@@ -17,7 +17,7 @@ public class BuildBridgeLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.green);
         if (hit.collider != null && hit.collider.gameObject.name == "BuildBridgeSign")
         {
             hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineHidden;

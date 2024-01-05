@@ -342,7 +342,7 @@ public class FirstPersonController : MonoBehaviour
                 Crouch();
             }
             
-            if(Input.GetKeyDown(crouchKey) && holdToCrouch)
+            if(Input.GetKeyDown(crouchKey) && holdToCrouch && !isSprinting)
             {
                 isCrouched = false;
                 Crouch();

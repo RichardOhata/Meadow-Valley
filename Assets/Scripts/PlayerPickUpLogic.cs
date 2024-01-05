@@ -34,8 +34,6 @@ public class PlayerPickUpLogic : MonoBehaviour
     public AudioSource woodPickUpSFX;
     private void Update()
     {
-
-        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
         if (hit.collider != null)
         {
             hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineHidden;
