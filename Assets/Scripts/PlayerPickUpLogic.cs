@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -48,6 +50,7 @@ public class PlayerPickUpLogic : MonoBehaviour
         {
             hit.collider.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineAll;
             hit.collider.GetComponent<Outline>().OutlineWidth = 3;
+            //UpdateUI();
             pickUpUI.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -102,5 +105,10 @@ public class PlayerPickUpLogic : MonoBehaviour
             }
         }
 
+    }
+
+    private void UpdateUI()
+    {
+        pickUpUI.GetComponentInChildren<TextMeshProUGUI>().text = "Press 'E' to pick up";
     }
 }

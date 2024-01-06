@@ -33,7 +33,9 @@ public class TreeLogic : MonoBehaviour
             int newWoodNum = Random.Range(3, 5);
             for (int i = 0; i < newWoodNum; i++)
             {
-                GameObject newWood = Instantiate(woodPrefab, transform.parent.position, transform.parent.rotation);
+                float spawnHeight = transform.parent.position.y + 1.0f;
+                Vector3 woodSpawnPos = new Vector3(transform.parent.position.x, spawnHeight, transform.parent.position.z);
+                GameObject newWood = Instantiate(woodPrefab, woodSpawnPos, transform.parent.rotation);
                 newWood.transform.parent = null;
             }
             spawnedWood = true;

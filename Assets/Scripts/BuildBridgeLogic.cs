@@ -13,6 +13,7 @@ public class BuildBridgeLogic : MonoBehaviour
     [SerializeField] private GameObject bridge;
     [SerializeField] private ResourceTracker resourceTracker;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private GameObject builtSFX;
     private RaycastHit hit;
 
     // Update is called once per frame
@@ -38,6 +39,8 @@ public class BuildBridgeLogic : MonoBehaviour
                   
                     if (resourceTracker.decWood(50))
                     {
+                        builtSFX.SetActive(true);
+                        builtSFX.GetComponent<AudioSource>().Play();
                         bridge.SetActive(true);
                         buildBridgeUI.SetActive(false);
                         Destroy(gameObject);
