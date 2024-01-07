@@ -75,8 +75,16 @@ public class PlayerPickUpLogic : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Resource"))
                 {
-                    resourceTracker.incWood(1);
-                    woodPickUpSFX.Play();
+                    if (hit.collider.gameObject.tag == "Wood")
+                    {
+                        resourceTracker.incWood(1);
+                        woodPickUpSFX.Play();
+                    } else if (hit.collider.gameObject.tag== "Cube")
+                    {
+                        Debug.Log("Hello");
+                        resourceTracker.incCube(1);
+                    }
+
                     Destroy(hit.collider.gameObject);
                     pickUpUI.SetActive(false);
                 }
@@ -104,7 +112,6 @@ public class PlayerPickUpLogic : MonoBehaviour
                 rb.isKinematic = false;
             }
         }
-
     }
 
     private void UpdateUI()

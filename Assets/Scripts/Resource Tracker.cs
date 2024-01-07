@@ -11,7 +11,7 @@ public class ResourceTracker : MonoBehaviour
     public void incWood(int amount)
     {
         woodCount += amount;
-        UpdateWoodQuests();
+        UpdateWoodQuest();
     }
 
 
@@ -32,11 +32,27 @@ public class ResourceTracker : MonoBehaviour
         moneyCount += amount;
     }
 
-    private void UpdateWoodQuests()
+    public void incCube(int amount)
+    {
+        UpdateCubeQuest();
+    }
+
+    private void UpdateWoodQuest()
     {
         foreach (Quest quest in questManager.activeQuests)
         {
             if (quest.objectivies[0].type == QuestObjectiveType.CollectWood)
+            {
+                quest.objectivies[0].currentAmount++;
+            }
+        }
+    }
+
+    private void UpdateCubeQuest()
+    {
+        foreach (Quest quest in questManager.activeQuests)
+        {
+            if (quest.objectivies[0].type == QuestObjectiveType.GlowingBlocks)
             {
                 quest.objectivies[0].currentAmount++;
             }

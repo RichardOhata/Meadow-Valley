@@ -13,6 +13,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject questEntryPrefab;
     [SerializeField] private GameObject questDescPrefab;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject glowingCubeSpawnArea;
+    [SerializeField] private GameObject glowingCubePrefab;
     private bool journalIsOpen = false;
 
  
@@ -79,7 +81,15 @@ public class QuestManager : MonoBehaviour
         if (!activeQuests.Contains(quests[randomIndex]))
         {
             Quest newQuest = quests[randomIndex];
-            newQuest.RandomizeReward(100, 500);
+            if (newQuest.objectivies[0].type == QuestObjectiveType.CollectWood)
+            {
+                newQuest.RandomizeReward(100, 500);
+            } else if(newQuest.objectivies[0].type == QuestObjectiveType.GlowingBlocks)
+            {
+                newQuest.RandomizeReward(1000, 1500);
+                SpawnGlowingCubes();
+            }
+          
             activeQuests.Add(newQuest);
         }
         else if (activeQuests.Count == quests.Count)
@@ -127,5 +137,27 @@ public class QuestManager : MonoBehaviour
         player.GetComponent<ResourceTracker>().incMoney(quest.reward);
         activeQuests.Remove(quest);
         Destroy(questEntry);
+    }
+
+    // Custom Quest Methods
+    private void SpawnGlowingCubes()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            Vector3 randomPosition = GetRandomPositionInSpawnArea();
+            Quaternion randomRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
+            Instantiate(glowingCubePrefab, randomPosition, randomRotation);
+        }
+
+    }
+    Vector3 GetRandomPositionInSpawnArea()
+    {
+        Bounds colliderBounds = glowingCubeSpawnArea.GetComponent<BoxCollider>().bounds;
+
+        float randomX = Random.Range(colliderBounds.min.x, colliderBounds.max.x);
+        float randomZ = Random.Range(colliderBounds.min.z, colliderBounds.max.z);
+
+        return new Vector3(randomX, colliderBounds.center.y, randomZ);
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Tree
   - Terrain
+  - Cube
+  - Wood
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,11 @@ public class Quest : ScriptableObject
     {
         reward = Random.Range(min, max);
     }
+
+    public virtual void InitializeQuest()
+    {
+        Debug.Log("Base Quest Initalization");
+    }
 }
 
 [System.Serializable]
@@ -36,5 +41,6 @@ public enum QuestObjectiveType
 {
     Nothing,
     CollectWood,
-    CollectStone
+    CollectStone,
+    GlowingBlocks
 }

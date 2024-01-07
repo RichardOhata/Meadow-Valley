@@ -5227,15 +5227,15 @@ PrefabInstance:
       objectReference: {fileID: 1846274910}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 610.5503
+      value: 450.5503
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.4
+      value: 18.4
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 333.0161
+      value: 500.0161
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8206,6 +8206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quests:
   - {fileID: 11400000, guid: 8abd6e5e9211a804296a46c8931c5753, type: 2}
+  - {fileID: 11400000, guid: 691eca61a017d3644b0d86af3dcaddc9, type: 2}
   - {fileID: 11400000, guid: 1b5b9519d24fdb64eaa6ef98f1711153, type: 2}
   activeQuests: []
   journal: {fileID: 400515713}
@@ -8213,6 +8214,8 @@ MonoBehaviour:
   questEntryPrefab: {fileID: 3804533864553766171, guid: 3a689411b6129b74781bb3413c4d73b5, type: 3}
   questDescPrefab: {fileID: 3656055778920236902, guid: a40093284e4c11f479ec1ece8d4fa43a, type: 3}
   player: {fileID: 1127390981}
+  glowingCubeSpawnArea: {fileID: 1883861225}
+  glowingCubePrefab: {fileID: 2435350816859638449, guid: 72fc5339596f538469e9e14855026346, type: 3}
 --- !u!4 &1846274911
 Transform:
   m_ObjectHideFlags: 0
@@ -8419,6 +8422,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4702229198241056, guid: 0ba258545da721e488ecb71ffd143b6f, type: 3}
   m_PrefabInstance: {fileID: 1881014483}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1883861225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1883861227}
+  - component: {fileID: 1883861226}
+  m_Layer: 0
+  m_Name: CubeSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1883861226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883861225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 68.10623, y: 0.055786967, z: 139.31747}
+  m_Center: {x: 4.819498, y: 1.8017108, z: -38.506256}
+--- !u!4 &1883861227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883861225}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.2667496, z: -0, w: 0.9637659}
+  m_LocalPosition: {x: 389.6, y: 16.62, z: 526.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30.942, z: 0}
 --- !u!4 &1886490629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6894979521318456901, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
@@ -9290,3 +9346,4 @@ SceneRoots:
   - {fileID: 1846274911}
   - {fileID: 1067181311}
   - {fileID: 801478167}
+  - {fileID: 1883861227}
