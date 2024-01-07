@@ -125,6 +125,7 @@ public class QuestManager : MonoBehaviour
     {
         quest.objectivies[0].resetAmount();
         player.GetComponent<ResourceTracker>().incMoney(quest.reward);
+        activeQuests.Remove(quest);
         Destroy(questEntry);
     }
 }
