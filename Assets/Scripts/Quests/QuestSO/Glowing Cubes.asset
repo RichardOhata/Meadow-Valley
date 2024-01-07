@@ -20,4 +20,4 @@ MonoBehaviour:
     objectiveDescription: 
     currentAmount: 0
     targetAmount: 10
-  reward: 100
+  reward: 1000
