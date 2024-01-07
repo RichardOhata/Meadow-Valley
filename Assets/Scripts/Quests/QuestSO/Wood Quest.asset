@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Wood Quest
   m_EditorClassIdentifier: 
   questName: Need Wood for campfire
-  questDescription: Joe needs 50 wood to keep the campfire burning
+  questDescription: Joe needs 10 wood to keep the campfire burning
   objectivies:
-  - objectiveDescription: Gather 50 wood
+  - type: 1
+    objectiveDescription: Gather 10 wood
     currentAmount: 0
-    targetAmount: 50
-  reward: 100
+    targetAmount: 10
+  reward: 436

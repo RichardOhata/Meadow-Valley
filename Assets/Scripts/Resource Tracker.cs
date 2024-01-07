@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class ResourceTracker : MonoBehaviour
 {
-
+    [SerializeField] private QuestManager questManager;
     public int woodCount = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int moneyCount = 0;
 
     public void incWood(int amount)
     {
         woodCount += amount;
+        UpdateWoodQuests();
     }
+
 
     public bool decWood(int amount)
     {
@@ -34,6 +25,21 @@ public class ResourceTracker : MonoBehaviour
         {
             return false;
         }
-       
+    }
+
+    public void incMoney(int amount)
+    {
+        moneyCount += amount;
+    }
+
+    private void UpdateWoodQuests()
+    {
+        foreach (Quest quest in questManager.activeQuests)
+        {
+            if (quest.objectivies[0].type == QuestObjectiveType.CollectWood)
+            {
+                quest.objectivies[0].currentAmount++;
+            }
+        }
     }
 }

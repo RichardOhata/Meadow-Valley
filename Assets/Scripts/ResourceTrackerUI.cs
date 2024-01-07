@@ -6,6 +6,7 @@ using UnityEngine;
 public class ResourceTrackerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI woodCount;
+    [SerializeField] TextMeshProUGUI moneyCount;
     [SerializeField] GameObject player;
     ResourceTracker resourceTracker;
 
@@ -17,11 +18,18 @@ public class ResourceTrackerUI : MonoBehaviour
     void Update()
     {
         UpdateWoodCount();
+        UpdateMoney();
     }
 
-    void UpdateWoodCount()
+    private void UpdateWoodCount()
     {
         woodCount.gameObject.SetActive(resourceTracker.woodCount != 0);
         woodCount.text = "Wood: " + resourceTracker.woodCount;
+    }
+
+    private void UpdateMoney()
+    {
+        moneyCount.gameObject.SetActive(resourceTracker.moneyCount != 0);
+        moneyCount.text = "Money: " + resourceTracker.moneyCount;
     }
 }

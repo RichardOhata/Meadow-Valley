@@ -11,13 +11,30 @@ public class Quest : ScriptableObject
     public QuestObjective[] objectivies;
 
     public int reward;
+
+    public void RandomizeReward(int min, int max)
+    {
+        reward = Random.Range(min, max);
+    }
 }
 
 [System.Serializable]
 public class QuestObjective
 {
+    public QuestObjectiveType type;
     public string objectiveDescription;
     public int currentAmount;
     public int targetAmount;
     public bool isComplete => currentAmount >= targetAmount;
+    public void resetAmount()
+    {
+        currentAmount = 0;
+    }
+}
+
+public enum QuestObjectiveType
+{
+    Nothing,
+    CollectWood,
+    CollectStone
 }
