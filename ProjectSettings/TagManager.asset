@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Cube
   - Wood
+  - Fish
   layers:
   - Default
   - TransparentFX

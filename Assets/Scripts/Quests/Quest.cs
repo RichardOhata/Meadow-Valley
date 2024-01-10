@@ -42,5 +42,6 @@ public enum QuestObjectiveType
     Nothing,
     CollectWood,
     CollectStone,
-    GlowingBlocks
+    GlowingBlocks,
+    Fishing
 }

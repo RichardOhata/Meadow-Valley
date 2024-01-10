@@ -88,6 +88,10 @@ public class QuestManager : MonoBehaviour
             {
                 newQuest.RandomizeReward(1000, 1500);
                 SpawnGlowingCubes();
+            } else if (newQuest.objectivies[0].type == QuestObjectiveType.Fishing)
+            {
+                newQuest.RandomizeReward(50, 100);
+                SpawnFish();
             }
           
             activeQuests.Add(newQuest);
@@ -159,5 +163,10 @@ public class QuestManager : MonoBehaviour
         float randomZ = Random.Range(colliderBounds.min.z, colliderBounds.max.z);
 
         return new Vector3(randomX, colliderBounds.center.y, randomZ);
+    }
+
+    private void SpawnFish()
+    {
+
     }
 }

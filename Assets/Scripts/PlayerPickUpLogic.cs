@@ -78,11 +78,14 @@ public class PlayerPickUpLogic : MonoBehaviour
                     if (hit.collider.gameObject.tag == "Wood")
                     {
                         resourceTracker.incWood(1);
-                        woodPickUpSFX.Play();
-                    } else if (hit.collider.gameObject.tag== "Cube")
+                        woodPickUpSFX.Play(1);
+                    } else if (hit.collider.gameObject.tag == "Cube")
                     {
-                        Debug.Log("Hello");
-                        resourceTracker.incCube(1);
+               
+                        resourceTracker.incCube();
+                    } else if (hit.collider.gameObject.tag == "Fish")
+                    {
+                        resourceTracker.incFish();
                     }
 
                     Destroy(hit.collider.gameObject);
