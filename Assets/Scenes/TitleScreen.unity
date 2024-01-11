@@ -6353,6 +6353,7 @@ GameObject:
   - component: {fileID: 958197339}
   - component: {fileID: 958197338}
   - component: {fileID: 958197341}
+  - component: {fileID: 958197342}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -6486,6 +6487,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c95ac29ccb536d439113b7cc7522df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &958197342
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958197336}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &967117580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11413,6 +11426,7 @@ GameObject:
   - component: {fileID: 1623726461}
   - component: {fileID: 1623726464}
   - component: {fileID: 1623726465}
+  - component: {fileID: 1623726466}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -11567,6 +11581,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c95ac29ccb536d439113b7cc7522df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1623726466
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623726459}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1624643544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13617,6 +13643,7 @@ GameObject:
   - component: {fileID: 1855390529}
   - component: {fileID: 1855390528}
   - component: {fileID: 1855390531}
+  - component: {fileID: 1855390532}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -13738,6 +13765,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c95ac29ccb536d439113b7cc7522df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1855390532
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855390526}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1858377295
 PrefabInstance:
   m_ObjectHideFlags: 0
