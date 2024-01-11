@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class QuestManager : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject glowingCubeSpawnArea;
     [SerializeField] private GameObject glowingCubePrefab;
+    [SerializeField] private GameObject fishPrefab;
+    [SerializeField] private GameObject fishSpawnArea;
     private bool journalIsOpen = false;
 
  
@@ -167,6 +171,12 @@ public class QuestManager : MonoBehaviour
 
     private void SpawnFish()
     {
-
+        for (int i = 0; i < 7; i++)
+        {
+            Bounds fishSpawnBounds = fishSpawnArea.GetComponent<BoxCollider>().bounds;
+            float randomX = Random.Range(fishSpawnBounds.min.x, fishSpawnBounds.max.x);
+            float randomZ = Random.Range(fishSpawnBounds.min.z, fishSpawnBounds.max.z);
+            Instantiate(fishPrefab, new Vector3(randomX, fishSpawnBounds.center.y, randomZ), Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+        }
     }
 }
