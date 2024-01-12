@@ -12,6 +12,7 @@ public class ButtonLogic : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         StartCoroutine(FadeInButton(startButton, 0.5f));
         StartCoroutine(FadeInButton(settingsButton, 1f));
         StartCoroutine(FadeInButton(quitButton, 1.5f));

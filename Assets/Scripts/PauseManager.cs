@@ -9,8 +9,6 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject pausePanel;
 
-
-    // Update is called once per frame
     void Update()
     {
         PauseGame();
@@ -26,6 +24,7 @@ public class PauseManager : MonoBehaviour
                 pausePanel.SetActive(true);
                 player.GetComponent<FirstPersonController>().cameraCanMove = false;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 Time.timeScale = 0;
             } else
             {
@@ -33,6 +32,7 @@ public class PauseManager : MonoBehaviour
                 player.GetComponent<FirstPersonController>().cameraCanMove = true;
                 player.GetComponent<FirstPersonController>().lockCursor = true;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Time.timeScale = 1f;
             }
            
