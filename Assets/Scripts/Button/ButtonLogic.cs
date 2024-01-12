@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,9 +12,9 @@ public class ButtonLogic : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(FadeInButton(startButton, 0f));
-        StartCoroutine(FadeInButton(settingsButton, 0.5f));
-        StartCoroutine(FadeInButton(quitButton, 1f));
+        StartCoroutine(FadeInButton(startButton, 0.5f));
+        StartCoroutine(FadeInButton(settingsButton, 1f));
+        StartCoroutine(FadeInButton(quitButton, 1.5f));
 
     }
     private IEnumerator FadeInButton(Button button, float delay)
