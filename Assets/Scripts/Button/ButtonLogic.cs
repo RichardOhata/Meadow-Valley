@@ -23,9 +23,7 @@ public class ButtonLogic : MonoBehaviour
     }
     private IEnumerator FadeInButton(Button button, float delay)
     {
-
         yield return new WaitForSeconds(delay);
-        Debug.Log(button.gameObject.name);
         CanvasGroup canvasGroup = button.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
         while (canvasGroup.alpha <= 1)

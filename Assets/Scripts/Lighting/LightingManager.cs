@@ -13,6 +13,10 @@ public class LightingManager : MonoBehaviour
     [SerializeField] Material[] SkyBoxes;
     [SerializeField] GameObject AmbientLight;
     [SerializeField] private float timeSpeedFactor = 0.05f;
+    [SerializeField] private AudioSource dayTimeAmbience;
+    private bool dayTimeAmbiencePlaying = false;
+    [SerializeField] private AudioSource nightTimeAmbience;
+    private bool nightTimeAmbiencePlaying = false;
     private void Start()
     {
         TimeOfDay = 12.0f;
@@ -69,21 +73,49 @@ public class LightingManager : MonoBehaviour
     {
        if (TimeOfDay >= 6 && TimeOfDay <= 8)
         {
+            PlayDayTimeAmbience();
             AmbientLight.SetActive(false);
             RenderSettings.skybox = SkyBoxes[0]; 
         }
        else if (TimeOfDay > 8 && TimeOfDay <= 19)
         {
+            PlayDayTimeAmbience();
             RenderSettings.skybox = SkyBoxes[1];
         }
        else if (TimeOfDay > 19 && TimeOfDay <= 21)
         {
+            PlayDayTimeAmbience();
             RenderSettings.skybox = SkyBoxes[2];
         }
        else if (TimeOfDay > 21 || TimeOfDay < 6)
         {
             RenderSettings.skybox = SkyBoxes[3];
+         
+            PlayNightTimeAmbience();
             AmbientLight.SetActive(true);
         }
     }
+
+    private void PlayDayTimeAmbience()
+    {
+        if (!dayTimeAmbiencePlaying)
+        {
+            nightTimeAmbience.Stop();
+            nightTimeAmbiencePlaying = false;
+            dayTimeAmbience.Play();
+            dayTimeAmbiencePlaying = true;
+        }
+    }
+
+    private void PlayNightTimeAmbience()
+    {
+        if (!nightTimeAmbiencePlaying)
+        {
+            dayTimeAmbience.Stop();
+            dayTimeAmbiencePlaying = false;
+            nightTimeAmbience.PlayDelayed(3f);
+            nightTimeAmbiencePlaying = true;
+        }
+    }
+
 }
